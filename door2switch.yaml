@@ -1,0 +1,16 @@
+blueprint:
+  name: door2switch
+  description: Toggle switch when door is opened
+  domain: automation
+  input:
+    doorsensor_entity:
+      name: Door Sensor
+      selector:
+        entity:
+          domain: binary_sensor
+    switch_target:
+      name: Switch
+      selector:
+        target:
+          entity:
+            domain: switch
