@@ -1,0 +1,27 @@
+domain: automation
+input:
+  action_sensor:
+    name: Action Sensor (IR sensor)
+    description: Zigbee2mqtt action sensor
+    selector:
+      entity:
+        integration: mqtt
+        domain: sensor
+  detect_action:
+    name: On movement detect
+    description: When movement is detected
+    default: []
+    selector:
+      action: {}
+mode: parallel
+max_exceeded: silent
+trigger:
+  platform: state
+  entity_id: !input 'action_sensor'
+action:
+- variables:
+    command: '{{ trigger.to_state.attributes.action if trigger.to_state.state == ""
+      else trigger.to_state.state }}'
+- choose:
+  - conditions: '{{ command == ''detect'' }}'
+    sequence: !input 'detect_action'
