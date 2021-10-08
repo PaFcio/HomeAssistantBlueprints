@@ -1,4 +1,7 @@
 blueprint:
+  name: IR Sensor
+  description: For IR sensors
+  
   domain: automation
   input:
     action_sensor:
