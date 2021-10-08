@@ -17,8 +17,6 @@ blueprint:
       default: []
       selector:
         action: {}
-  mode: parallel
-  max_exceeded: silent
   trigger:
     platform: state
     entity_id: !input 'action_sensor'
